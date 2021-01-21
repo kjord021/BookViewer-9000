@@ -4,6 +4,7 @@ const ejs = require("ejs");
 const mongoose = require("mongoose");
 const { Decimal128 } = require("bson");
 const { Int32 } = require("bson");
+const { Console } = require("console");
 
 require('dotenv').config();
 
@@ -25,9 +26,12 @@ mongoose.connect("mongodb+srv://"+process.env.DB_USER+":"+process.env.DB_PASS+pr
     throw err;
   } else {
     console.log("DB Connected Sucessfully");
+    console.log("API Ready to Recieve Commands");
   }
 
 });
+
+
 
 const bookSchema = {
   author: String,
@@ -98,6 +102,6 @@ app.route("/books/:bookTitle")
     })
 });
 
-app.listen(3000, function() {
-  console.log("Server started on port 3000");
+app.listen(5000, function() {
+  console.log("Server started on port 5000");
 });
