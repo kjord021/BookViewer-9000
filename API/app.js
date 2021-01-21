@@ -33,7 +33,11 @@ const bookSchema = {
   genre: String,
   price: Decimal128,
   rating: Number,
-  title: String
+  title: String,
+  authorBio: String,
+  date: Date,
+  description: String,
+  publisher: String
 };
 
 const Book = mongoose.model("Book", bookSchema);
@@ -58,8 +62,12 @@ app.route('/books')
     genre: req.body.genre,
     price: req.body.price,
     rating: req.body.rating,
-    title: req.body.title
-  })
+    title: req.body.title,
+    authorBio: req.body.authorBio,
+    date: req.body.date,
+    description: req.body.description,
+    publisher: req.body.publisher
+  });
   newBook.save(function (err) {
     if(!err) {
       res.send("Book added");
